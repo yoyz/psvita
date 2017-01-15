@@ -73,26 +73,29 @@ int main(int argc, char *argv[])
   
   //printf("Welcome to the psvDebugScreen showcase !\n");
   if( SDL_Init( SDL_INIT_VIDEO| SDL_INIT_AUDIO) < 0 )
-    return -1;
-  if(TTF_Init() == -1)
-    exit(-2);
-  
-  
-  srw=SDL_RWFromFile( "ux0:/app/VSDK00001/font.ttf","rb");
-  font = TTF_OpenFont("ux0:/app/VSDK00001/font.ttf", 12);
-  if (!srw) exit(3);
-  if (!font) exit(2);
-  
-  if ( SDL_OpenAudio(&wav_spec, NULL) < 0 )
-    exit(-1);
-  SDL_PauseAudio(0);
-  
+    return -1;  
   
   if ((gWindow = SDL_CreateWindow( "GreenRectangle", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN)) == NULL)
     if ((gRenderer = SDL_CreateRenderer( gWindow, -1, SDL_RENDERER_PRESENTVSYNC)) == NULL)
       return -1;
-  
+
   screen=SDL_GetWindowSurface(gWindow);
+
+  if(TTF_Init() == -1)
+    exit(-2);
+
+  //srw=SDL_RWFromFile( "ux0:/app/VSDK00001/font.ttf","rb");
+  font = TTF_OpenFont("ux0:/app/VSDK00001/font.ttf", 12);
+  //if (!srw) exit(3);
+  if (!font) exit(2);
+    
+  if ( SDL_OpenAudio(&wav_spec, NULL) < 0 )
+    exit(-1);
+  SDL_PauseAudio(0);
+
+  
+
+  
   txt = TTF_RenderText_Solid(font, "Salut !", colorme);
   
   while (cont)
