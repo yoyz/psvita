@@ -9,8 +9,8 @@ PROJECT_TITLE := VitaSDK sample
 PROJECT_TITLEID := VSDK00001
 
 PROJECT := vita_sample
-CFLAGS   += -I.
-CXXFLAGS += -std=c++11 -I. -I$(VITASDK)/arm-vita-eabi/include/ -L$(VITASDK)/arm-vita-eabi/lib -lSDL2
+CFLAGS   += -I. -fpermissive
+CXXFLAGS += -std=c++11 -I. -I$(VITASDK)/arm-vita-eabi/include/ -L$(VITASDK)/arm-vita-eabi/lib -lSDL2 
 
 SRC_C :=$(call rwildcard, src/, *.c)
 SRC_CPP :=$(call rwildcard, src/, *.cpp)
